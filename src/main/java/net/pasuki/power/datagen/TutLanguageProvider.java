@@ -3,7 +3,6 @@ package net.pasuki.power.datagen;
 import net.pasuki.power.Registration;
 import net.pasuki.power.Power;
 import net.pasuki.power.blocks.GeneratorBlock;
-import net.pasuki.power.cables.blocks.FacadeBlock;
 import net.pasuki.power.cables.blocks.FacadeBlockItem;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;

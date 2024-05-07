@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+@SuppressWarnings({"deprecation", "DataFlowIssue"})
 public class FacadeBlockEntity extends CableBlockEntity {
 
     public static final String MIMIC_TAG = "mimic";
@@ -48,7 +49,7 @@ public class FacadeBlockEntity extends CableBlockEntity {
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
         CompoundTag nbtTag = new CompoundTag();
         saveMimic(nbtTag);
-        return ClientboundBlockEntityDataPacket.create(this, (BlockEntity entity) -> {return nbtTag;});
+        return ClientboundBlockEntityDataPacket.create(this, (BlockEntity entity) -> nbtTag);
     }
 
     // getUpdateTag() is called on the server on initial load of the chunk. It will cause

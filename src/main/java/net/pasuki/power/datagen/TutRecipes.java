@@ -14,6 +14,7 @@ import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
 
+@SuppressWarnings("NullableProblems")
 public class TutRecipes extends RecipeProvider {
 
     public TutRecipes(PackOutput packOutput) {

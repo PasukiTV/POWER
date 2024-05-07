@@ -1,7 +1,6 @@
 package net.pasuki.power.blocks;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -26,6 +25,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
+@SuppressWarnings({"deprecation", "NullableProblems"})
 public class GeneratorBlock extends Block implements EntityBlock {
 
     public static final String SCREEN_TUTORIAL_GENERATOR = "tutorial.screen.generator";

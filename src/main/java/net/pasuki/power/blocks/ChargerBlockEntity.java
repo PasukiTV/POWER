@@ -18,6 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+@SuppressWarnings({"NullableProblems", "DataFlowIssue"})
 public class ChargerBlockEntity extends BlockEntity {
 
     public static final String ENERGY_TAG = "Energy";

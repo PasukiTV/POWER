@@ -30,6 +30,7 @@ import java.util.List;
 
 import static net.pasuki.power.cables.blocks.CableBlock.*;
 
+@SuppressWarnings({"GrazieInspection", "deprecation", "DataFlowIssue"})
 public class FacadeBlockItem extends BlockItem {
 
     public static final String FACADE_IS_MIMICING = "tutorial.facade.is_mimicing";

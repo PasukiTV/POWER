@@ -9,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
+@SuppressWarnings("NullableProblems")
 public class GeneratorScreen extends AbstractContainerScreen<GeneratorContainer> {
 
     private static final int ENERGY_LEFT = 96;

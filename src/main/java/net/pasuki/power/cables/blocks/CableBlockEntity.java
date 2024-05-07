@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
 
+@SuppressWarnings({"NullableProblems", "DataFlowIssue"})
 public class CableBlockEntity extends BlockEntity {
 
     public static final String ENERGY_TAG = "Energy";

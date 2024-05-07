@@ -36,6 +36,7 @@ import static net.pasuki.power.tools.BakedModelHelper.v;
 
 
 
+@SuppressWarnings({"GrazieInspection", "deprecation", "DataFlowIssue"})
 public class CableBakedModel implements IDynamicBakedModel {
 
     private final IGeometryBakingContext context;

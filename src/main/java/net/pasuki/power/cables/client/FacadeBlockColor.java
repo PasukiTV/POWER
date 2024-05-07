@@ -11,6 +11,7 @@ import net.pasuki.power.cables.blocks.FacadeBlockEntity;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+@SuppressWarnings("DataFlowIssue")
 public class FacadeBlockColor implements BlockColor {
 
     @Override

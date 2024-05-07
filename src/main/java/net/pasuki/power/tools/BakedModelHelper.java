@@ -8,6 +8,7 @@ import net.minecraft.core.Position;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.model.pipeline.QuadBakingVertexConsumer;
 
+@SuppressWarnings("DuplicateBranchesInSwitch")
 public class BakedModelHelper {
 
     public static BakedQuad quad(Vec3 v1, Vec3 v2, Vec3 v3, Vec3 v4, TextureAtlasSprite sprite, int rotation) {

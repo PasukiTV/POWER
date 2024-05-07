@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
 
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;
 
+@SuppressWarnings({"deprecation", "NullableProblems", "RedundantTypeArguments"})
 public class CableBlock extends Block implements SimpleWaterloggedBlock, EntityBlock {
 
     // Properties that indicate if there is the same block in a certain direction.

@@ -9,6 +9,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
+@SuppressWarnings("NullableProblems")
 public class TutItemTags extends ItemTagsProvider {
 
     public TutItemTags(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, BlockTagsProvider blockTags, ExistingFileHelper helper) {

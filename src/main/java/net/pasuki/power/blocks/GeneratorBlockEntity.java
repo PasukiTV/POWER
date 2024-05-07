@@ -23,6 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+@SuppressWarnings({"NullableProblems", "DataFlowIssue"})
 public class GeneratorBlockEntity extends BlockEntity {
 
     public static final String ITEMS_TAG = "Inventory";
@@ -32,8 +33,8 @@ public class GeneratorBlockEntity extends BlockEntity {
     public static final int MAXTRANSFER = 1000;
     public static final int CAPACITY = 100000;
 
-    public static int SLOT_COUNT = 1;
-    public static int SLOT = 0;
+    public static final int SLOT_COUNT = 1;
+    public static final int SLOT = 0;
 
     private final ItemStackHandler items = createItemHandler();
     private final LazyOptional<IItemHandler> itemHandler = LazyOptional.of(() -> items);

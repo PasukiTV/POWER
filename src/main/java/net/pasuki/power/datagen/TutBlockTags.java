@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
+@SuppressWarnings("NullableProblems")
 public class TutBlockTags extends BlockTagsProvider {
 
     public TutBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {

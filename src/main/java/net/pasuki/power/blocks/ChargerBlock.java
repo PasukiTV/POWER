@@ -17,6 +17,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+@SuppressWarnings({"deprecation", "NullableProblems"})
 public class ChargerBlock extends Block implements EntityBlock {
 
     private static final VoxelShape AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D);

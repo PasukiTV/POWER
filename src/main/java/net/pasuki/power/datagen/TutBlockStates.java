@@ -62,12 +62,10 @@ public class TutBlockStates extends BlockStateProvider {
     private void registerGenerator() {
         BlockModelBuilder modelOn = models().cube(Registration.GENERATOR_BLOCK.getId().getPath()+"_on", BOTTOM, TOP, modLoc("block/generator_block_on"), SIDE, SIDE, SIDE).texture("particle", SIDE);
         BlockModelBuilder modelOff = models().cube(Registration.GENERATOR_BLOCK.getId().getPath()+"_off", BOTTOM, TOP, modLoc("block/generator_block"), SIDE, SIDE, SIDE).texture("particle", SIDE);
-        directionBlock(Registration.GENERATOR_BLOCK.get(), (state, builder) -> {
-            builder.modelFile(state.getValue(BlockStateProperties.POWERED) ? modelOn : modelOff);
-        });
+        directionBlock(Registration.GENERATOR_BLOCK.get(), (state, builder) -> builder.modelFile(state.getValue(BlockStateProperties.POWERED) ? modelOn : modelOff));
     }
 
-    private VariantBlockStateBuilder directionBlock(Block block, BiConsumer<BlockState, ConfiguredModel.Builder<?>> model) {
+    private void directionBlock(Block block, BiConsumer<BlockState, ConfiguredModel.Builder<?>> model) {
         VariantBlockStateBuilder builder = getVariantBuilder(block);
         builder.forAllStates(state -> {
             ConfiguredModel.Builder<?> bld = ConfiguredModel.builder();
@@ -75,7 +73,6 @@ public class TutBlockStates extends BlockStateProvider {
             applyRotationBld(bld, state.getValue(BlockStateProperties.FACING));
             return bld.build();
         });
-        return builder;
     }
 
     private void applyRotationBld(ConfiguredModel.Builder<?> builder, Direction direction) {

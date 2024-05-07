@@ -25,6 +25,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("NullableProblems")
 public class TutLootTables extends VanillaBlockLoot {
 
     @Override

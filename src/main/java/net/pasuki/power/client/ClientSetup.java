@@ -14,14 +14,13 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import static net.pasuki.power.Power.MODID;
 
+@SuppressWarnings("EmptyMethod")
 @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetup {
 
     @SubscribeEvent
     public static void init(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            MenuScreens.register(Registration.GENERATOR_CONTAINER.get(), GeneratorScreen::new);
-        });
+        event.enqueueWork(() -> MenuScreens.register(Registration.GENERATOR_CONTAINER.get(), GeneratorScreen::new));
     }
 
     @SubscribeEvent

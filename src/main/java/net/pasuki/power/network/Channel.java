@@ -16,6 +16,7 @@ public class Channel {
         return packetId++;
     }
 
+    @SuppressWarnings("UnnecessaryLocalVariable")
     public static void register() {
         SimpleChannel net = NetworkRegistry.ChannelBuilder
                 .named(new ResourceLocation(Power.MODID, "tutorial"))
