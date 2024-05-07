@@ -1,8 +1,8 @@
 {
-  "block.tutpower.cable": "Cable",
-  "block.tutpower.charger_block": "Charger",
-  "block.tutpower.facade": "Facade",
-  "block.tutpower.generator_block": "Power Generator",
+  "block.power.cable": "Cable",
+  "block.power.charger_block": "Charger",
+  "block.power.facade": "Facade",
+  "block.power.generator_block": "Power Generator",
   "tab.tutpower": "Tutorial Power",
   "tutorial.facade.is_mimicing": "Facade is mimicking %s",
   "tutorial.screen.generator": "Generator"
