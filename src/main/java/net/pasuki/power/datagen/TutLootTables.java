@@ -4,6 +4,7 @@ import net.pasuki.power.Registration;
 import net.pasuki.power.Power;
 import net.pasuki.power.blocks.ChargerBlockEntity;
 import net.pasuki.power.blocks.GeneratorBlockEntity;
+import net.pasuki.power.blocks.SolarPanelBlockEntity;
 import net.pasuki.power.cables.blocks.CableBlockEntity;
 import net.pasuki.power.cables.blocks.FacadeBlockEntity;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
@@ -34,6 +35,7 @@ public class TutLootTables extends VanillaBlockLoot {
         createStandardTable(Registration.CHARGER_BLOCK.get(), Registration.CHARGER_BLOCK_ENTITY.get(), ChargerBlockEntity.ENERGY_TAG);
         createStandardTable(Registration.CABLE_BLOCK.get(), Registration.CABLE_BLOCK_ENTITY.get(), CableBlockEntity.ENERGY_TAG);
         createStandardTable(Registration.FACADE_BLOCK.get(), Registration.FACADE_BLOCK_ENTITY.get(), FacadeBlockEntity.MIMIC_TAG);
+        createStandardTable(Registration.SOLAR_PANEL_BLOCK.get(),Registration.SOLAR_PANEL_BLOCK_ENTITY.get(), SolarPanelBlockEntity.ENERGY_TAG);
     }
 
     @Override

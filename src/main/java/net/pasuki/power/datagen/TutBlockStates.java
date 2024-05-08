@@ -31,7 +31,17 @@ public class TutBlockStates extends BlockStateProvider {
         registerCharger();
         registerCable();
         registerFacade();
+        registerSolarPanel();
     }
+    private void registerSolarPanel() {
+        BlockModelBuilder model = models().cube(Registration.SOLAR_PANEL_BLOCK.getId().getPath(),
+                        BOTTOM, modLoc("block/solar_panel_block"), SIDE,
+                        SIDE, SIDE,SIDE)
+                .texture("particle", SIDE);
+
+        simpleBlock(Registration.SOLAR_PANEL_BLOCK.get(), model);
+    }
+
 
     private void registerCable() {
         BlockModelBuilder model = models().getBuilder("cable")

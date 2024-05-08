@@ -28,6 +28,7 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings({"deprecation", "NullableProblems"})
 public class GeneratorBlock extends Block implements EntityBlock {
 
+
     public static final String SCREEN_TUTORIAL_GENERATOR = "tutorial.screen.generator";
 
     public GeneratorBlock() {
@@ -85,7 +86,7 @@ public class GeneratorBlock extends Block implements EntityBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return this.defaultBlockState()
-                .setValue(BlockStateProperties.FACING, context.getNearestLookingDirection().getOpposite())
+                .setValue(BlockStateProperties.FACING, context.getHorizontalDirection().getOpposite())
                 .setValue(BlockStateProperties.POWERED, false);
     }
 

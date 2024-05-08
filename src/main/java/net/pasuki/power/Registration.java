@@ -35,6 +35,14 @@ public class Registration {
     public static final RegistryObject<BlockEntityType<ChargerBlockEntity>> CHARGER_BLOCK_ENTITY = BLOCK_ENTITIES.register("charger_block",
             () -> BlockEntityType.Builder.of(ChargerBlockEntity::new, CHARGER_BLOCK.get()).build(null));
 
+    public static final RegistryObject<SolarPanelBlock> SOLAR_PANEL_BLOCK = BLOCKS.register("solar_panel_block", SolarPanelBlock::new);
+    public static final RegistryObject<Item> SOLAR_PANEL_BLOCK_ITEM = ITEMS.register("solar_panel_block", () -> new BlockItem(SOLAR_PANEL_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockEntityType<SolarPanelBlockEntity>> SOLAR_PANEL_BLOCK_ENTITY = BLOCK_ENTITIES.register("solar_panel_block",
+            () -> BlockEntityType.Builder.of(SolarPanelBlockEntity::new, SOLAR_PANEL_BLOCK.get()).build(null));
+
+
+
+
     public static final RegistryObject<CableBlock> CABLE_BLOCK = BLOCKS.register("cable", CableBlock::new);
     public static final RegistryObject<Item> CABLE_BLOCK_ITEM = ITEMS.register("cable", () -> new BlockItem(CABLE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<BlockEntityType<CableBlockEntity>> CABLE_BLOCK_ENTITY = BLOCK_ENTITIES.register("cable",
@@ -52,6 +60,7 @@ public class Registration {
             .displayItems((featureFlags, output) -> {
                 output.accept(GENERATOR_BLOCK.get());
                 output.accept(CHARGER_BLOCK.get());
+                output.accept(SOLAR_PANEL_BLOCK.get());
                 output.accept(CABLE_BLOCK.get());
                 output.accept(FACADE_BLOCK.get());
             })

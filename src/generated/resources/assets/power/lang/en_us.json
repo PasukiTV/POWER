@@ -3,7 +3,8 @@
   "block.power.charger_block": "Charger",
   "block.power.facade": "Facade",
   "block.power.generator_block": "Power Generator",
-  "tab.tutpower": "Tutorial Power",
+  "block.power.solar_panel_block": "SolarPanel",
+  "tab.tutpower": "Power",
   "tutorial.facade.is_mimicing": "Facade is mimicking %s",
   "tutorial.screen.generator": "Generator"
 }

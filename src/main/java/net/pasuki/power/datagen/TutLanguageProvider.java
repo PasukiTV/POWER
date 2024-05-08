@@ -15,12 +15,13 @@ public class TutLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add(Registration.GENERATOR_BLOCK.get(), "Power Generator");
+        add(Registration.GENERATOR_BLOCK.get(), "Power Generator") ;
         add(Registration.CHARGER_BLOCK.get(), "Charger");
         add(Registration.CABLE_BLOCK.get(), "Cable");
         add(Registration.FACADE_BLOCK.get(), "Facade");
         add(GeneratorBlock.SCREEN_TUTORIAL_GENERATOR, "Generator");
         add(FacadeBlockItem.FACADE_IS_MIMICING, "Facade is mimicking %s");
-        add("tab.tutpower", "Tutorial Power");
+        add(Registration.SOLAR_PANEL_BLOCK.get(), "SolarPanel");
+        add("tab.tutpower", "Power");
     }
 }

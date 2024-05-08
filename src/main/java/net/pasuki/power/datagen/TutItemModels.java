@@ -16,6 +16,7 @@ public class TutItemModels extends ItemModelProvider {
     protected void registerModels() {
         withExistingParent(Registration.GENERATOR_BLOCK.getId().getPath(), modLoc("block/generator_block_off"));
         withExistingParent(Registration.CHARGER_BLOCK.getId().getPath(), modLoc("block/charger_block_on"));
+        withExistingParent(Registration.SOLAR_PANEL_BLOCK.getId().getPath(),modLoc("block/solar_panel_block"));
         withExistingParent(Registration.CABLE_BLOCK.getId().getPath(), modLoc("block/cable"));
         withExistingParent(Registration.FACADE_BLOCK.getId().getPath(), modLoc("block/facade"));
     }

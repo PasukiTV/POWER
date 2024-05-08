@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/POWER.main.iml" filepath="$PROJECT_DIR$/.idea/modules/POWER.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/POWER.test.iml" filepath="$PROJECT_DIR$/.idea/modules/POWER.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/net.pasuki.power.POWER.main.iml" filepath="$PROJECT_DIR$/.idea/modules/net.pasuki.power.POWER.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/net.pasuki.power.POWER.test.iml" filepath="$PROJECT_DIR$/.idea/modules/net.pasuki.power.POWER.test.iml" />
     </modules>
   </component>
 </project>
