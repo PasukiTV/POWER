@@ -40,7 +40,12 @@ public class Registration {
     public static final RegistryObject<BlockEntityType<SolarPanelBlockEntity>> SOLAR_PANEL_BLOCK_ENTITY = BLOCK_ENTITIES.register("solar_panel_block",
             () -> BlockEntityType.Builder.of(SolarPanelBlockEntity::new, SOLAR_PANEL_BLOCK.get()).build(null));
 
-
+    public static final RegistryObject<BatteryBlock> BATTERY_BLOCK = BLOCKS.register("battery_block", BatteryBlock::new);
+    public static final RegistryObject<Item> BATTERY_BLOCK_ITEM = ITEMS.register("battery_block", () -> new BlockItem(BATTERY_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockEntityType<BatteryBlockEntity>> BATTERY_BLOCK_ENTITY = BLOCK_ENTITIES.register("battery_block",
+            () -> BlockEntityType.Builder.of(BatteryBlockEntity::new, BATTERY_BLOCK.get()).build(null));
+    public static final RegistryObject<MenuType<BatteryContainer>> BATTERY_CONTAINER = MENU_TYPES.register("battery_block",
+            () -> IForgeMenuType.create((windowId, inv, data) -> new BatteryContainer(windowId, inv.player, data.readBlockPos())));
 
 
     public static final RegistryObject<CableBlock> CABLE_BLOCK = BLOCKS.register("cable", CableBlock::new);
@@ -61,6 +66,7 @@ public class Registration {
                 output.accept(GENERATOR_BLOCK.get());
                 output.accept(CHARGER_BLOCK.get());
                 output.accept(SOLAR_PANEL_BLOCK.get());
+                output.accept(BATTERY_BLOCK.get());
                 output.accept(CABLE_BLOCK.get());
                 output.accept(FACADE_BLOCK.get());
             })

@@ -32,6 +32,7 @@ public class TutBlockStates extends BlockStateProvider {
         registerCable();
         registerFacade();
         registerSolarPanel();
+        registerBattery();
     }
     private void registerSolarPanel() {
         BlockModelBuilder model = models().cube(Registration.SOLAR_PANEL_BLOCK.getId().getPath(),
@@ -67,6 +68,12 @@ public class TutBlockStates extends BlockStateProvider {
             bld.modelFile(state.getValue(BlockStateProperties.POWERED) ? modelOn : modelOff);
             return bld.build();
         });
+    }
+
+    private void registerBattery() {
+        BlockModelBuilder modelOn = models().cube(Registration.BATTERY_BLOCK.getId().getPath()+"_on", BOTTOM, TOP, modLoc("block/battery_block_on"), SIDE, SIDE, SIDE).texture("particle", SIDE);
+        BlockModelBuilder modelOff = models().cube(Registration.BATTERY_BLOCK.getId().getPath()+"_off", BOTTOM, TOP, modLoc("block/battery_block"), SIDE, SIDE, SIDE).texture("particle", SIDE);
+        directionBlock(Registration.BATTERY_BLOCK.get(), (state, builder) -> builder.modelFile(state.getValue(BlockStateProperties.POWERED) ? modelOn : modelOff));
     }
 
     private void registerGenerator() {

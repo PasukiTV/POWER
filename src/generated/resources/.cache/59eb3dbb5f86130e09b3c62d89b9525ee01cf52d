@@ -1,4 +1,5 @@
-// 1.20.1	2024-05-08T04:26:54.7431529	Loot Tables
+// 1.20.1	2024-05-08T15:42:14.4096017	Loot Tables
+5606fd1a99aa2b0c5bc1884a76465224e342937b data/power/loot_tables/blocks/battery_block.json
 26d5766433826c1ed90c92b91dde9e29cd890dc9 data/power/loot_tables/blocks/cable.json
 4a79a07d4b24445c9d03bc61264b7b0222aef88c data/power/loot_tables/blocks/charger_block.json
 456da009ec5cef7ca05f7af465e5c31ec378c0d5 data/power/loot_tables/blocks/facade.json

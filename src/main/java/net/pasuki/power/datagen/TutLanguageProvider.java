@@ -22,6 +22,7 @@ public class TutLanguageProvider extends LanguageProvider {
         add(GeneratorBlock.SCREEN_TUTORIAL_GENERATOR, "Generator");
         add(FacadeBlockItem.FACADE_IS_MIMICING, "Facade is mimicking %s");
         add(Registration.SOLAR_PANEL_BLOCK.get(), "SolarPanel");
+        add(Registration.BATTERY_BLOCK.get(), "Battery");
         add("tab.tutpower", "Power");
     }
 }

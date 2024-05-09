@@ -21,6 +21,7 @@ public class ClientSetup {
     @SubscribeEvent
     public static void init(FMLClientSetupEvent event) {
         event.enqueueWork(() -> MenuScreens.register(Registration.GENERATOR_CONTAINER.get(), GeneratorScreen::new));
+        event.enqueueWork(() -> MenuScreens.register(Registration.BATTERY_CONTAINER.get(), BatteryScreen::new));
     }
 
     @SubscribeEvent

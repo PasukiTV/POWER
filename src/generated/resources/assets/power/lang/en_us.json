@@ -1,4 +1,5 @@
 {
+  "block.power.battery_block": "Battery",
   "block.power.cable": "Cable",
   "block.power.charger_block": "Charger",
   "block.power.facade": "Facade",
