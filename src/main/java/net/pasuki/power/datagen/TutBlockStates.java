@@ -61,12 +61,10 @@ public class TutBlockStates extends BlockStateProvider {
     }
 
     private void registerFarmingBlock() {
-        BlockModelBuilder modelOn = models().slab(Registration.FARMING_BLOCK.getId().getPath()+"_on", SIDE, BOTTOM, modLoc("block/charger_block_on")).texture("particle", SIDE);
-        BlockModelBuilder modelOff = models().slab(Registration.FARMING_BLOCK.getId().getPath()+"_off", SIDE, BOTTOM, modLoc("block/charger_block")).texture("particle", SIDE);
-        getVariantBuilder(Registration.FARMING_BLOCK.get()).forAllStates(state -> {
-            ConfiguredModel.Builder<?> bld = ConfiguredModel.builder();
-            bld.modelFile(state.getValue(BlockStateProperties.POWERED) ? modelOn : modelOff);
-            return bld.build();
+        BlockModelBuilder modelOn = models().cube(Registration.FARMING_BLOCK.getId().getPath()+"_on", BOTTOM, TOP, modLoc("block/generator_block_on"), SIDE, SIDE, SIDE).texture("particle", SIDE);
+        BlockModelBuilder modelOff = models().cube(Registration.FARMING_BLOCK.getId().getPath()+"_off", BOTTOM, TOP, modLoc("block/generator_block"), SIDE, SIDE, SIDE).texture("particle", SIDE);
+        directionBlock(Registration.FARMING_BLOCK.get(), (state, builder) -> {
+            builder.modelFile(state.getValue(BlockStateProperties.POWERED) ? modelOn : modelOff);
         });
     }
 
