@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "power:block/farming_block_off"
+    },
+    "powered=true": {
+      "model": "power:block/farming_block_on"
+    }
+  }
+}

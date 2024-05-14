@@ -28,27 +28,36 @@ public class GeneratorBlockEntity extends BlockEntity {
 
     public static final String ITEMS_TAG = "Inventory";
     public static final String ENERGY_TAG = "Energy";
-
     public static final int GENERATE = 50;
-    public static final int MAXTRANSFER = 1000;
+    public static final int MAXRECEIVE = 1000;
+    public static final int MAXEXTRACT = 10;
     public static final int CAPACITY = 100000;
 
     public static final int SLOT_COUNT = 1;
     public static final int SLOT = 0;
 
+    public Boolean OUTPUT_TOP = false;
+    public Boolean OUTPUT_BOTTOM = false;
+    public Boolean OUTPUT_FRONT = false;
+    public Boolean OUTPUT_REAR = false;
+    public Boolean OUTPUT_LEFT = false;
+    public Boolean OUTPUT_RIGHT = false;
+
     private final ItemStackHandler items = createItemHandler();
     private final LazyOptional<IItemHandler> itemHandler = LazyOptional.of(() -> items);
 
-    private final EnergyStorage energy = createEnergyStorage();
+    public final EnergyStorage energy = createEnergyStorage();
     private final LazyOptional<IEnergyStorage> energyHandler = LazyOptional.of(() -> new AdaptedEnergyStorage(energy) {
         @Override
         public int receiveEnergy(int maxReceive, boolean simulate) {
-            return 0;
+            setChanged();
+            return super.receiveEnergy(maxReceive, simulate);
         }
 
         @Override
         public int extractEnergy(int maxExtract, boolean simulate) {
-            return 0;
+            setChanged();
+            return super.extractEnergy(maxExtract, simulate);
         }
 
         @Override
@@ -58,7 +67,7 @@ public class GeneratorBlockEntity extends BlockEntity {
 
         @Override
         public boolean canReceive() {
-            return false;
+            return true;
         }
     });
 
@@ -108,25 +117,96 @@ public class GeneratorBlockEntity extends BlockEntity {
     }
 
     private void distributeEnergy() {
-        // Check all sides of the block and send energy if that block supports the energy capability
-        for (Direction direction : Direction.values()) {
-            if (energy.getEnergyStored() <= 0) {
-                return;
+        if (energy.getEnergyStored() <= 0) {
+            return;
+        }
+
+        // Holen Sie den aktuellen BlockState und die Ausrichtung
+        BlockState state = level.getBlockState(getBlockPos());
+        Direction facing = state.getValue(BlockStateProperties.FACING);  // Ersetzen Sie BlockStateProperties.HORIZONTAL_FACING durch die tatsächliche Property, wenn anders
+
+        Direction TOP = Direction.UP;
+        Direction BOTTOM = Direction.DOWN;
+
+        Direction FRONT = facing;  // "vorne"
+        Direction REAR = facing.getOpposite();      // "hinten"
+
+        Direction LEFT = facing.getClockWise();  // Im Uhrzeigersinn für "links"
+        Direction RIGHT = facing.getCounterClockWise();      // Gegen den Uhrzeigersinn für "rechts"
+
+        // Durchlaufe nur die gewünschten Richtungen
+        if (OUTPUT_TOP) {
+            for (Direction direction : new Direction[]{TOP}) {
+                BlockEntity be = level.getBlockEntity(getBlockPos().relative(direction));
+                if (be != null) {
+                    be.getCapability(ForgeCapabilities.ENERGY).ifPresent(e -> {
+                        if (e.canReceive()) {
+                            int received = e.receiveEnergy(Math.min(energy.getEnergyStored(), MAXEXTRACT), false);
+                            energy.extractEnergy(received, false);
+                            setChanged();
+                        }
+                    });
+                }
             }
-            BlockEntity be = level.getBlockEntity(getBlockPos().relative(direction));
-            if (be != null) {
-                be.getCapability(ForgeCapabilities.ENERGY).map(e -> {
-                    if (e.canReceive()) {
-                        int received = e.receiveEnergy(Math.min(energy.getEnergyStored(), MAXTRANSFER), false);
-                        energy.extractEnergy(received, false);
-                        setChanged();
-                        return received;
-                    }
-                    return 0;
-                });
+        }
+        if (OUTPUT_BOTTOM) {
+            for (Direction direction : new Direction[]{BOTTOM}) {
+                BlockEntity be = level.getBlockEntity(getBlockPos().relative(direction));
+                if (be != null) {
+                    be.getCapability(ForgeCapabilities.ENERGY).ifPresent(e -> {
+                        if (e.canReceive()) {
+                            int received = e.receiveEnergy(Math.min(energy.getEnergyStored(), MAXEXTRACT), false);
+                            energy.extractEnergy(received, false);
+                            setChanged();
+                        }
+                    });
+                }
+            }
+        }
+        if (OUTPUT_REAR) {
+            for (Direction direction : new Direction[]{REAR}) {
+                BlockEntity be = level.getBlockEntity(getBlockPos().relative(direction));
+                if (be != null) {
+                    be.getCapability(ForgeCapabilities.ENERGY).ifPresent(e -> {
+                        if (e.canReceive()) {
+                            int received = e.receiveEnergy(Math.min(energy.getEnergyStored(), MAXEXTRACT), false);
+                            energy.extractEnergy(received, false);
+                            setChanged();
+                        }
+                    });
+                }
+            }
+        }
+        if (OUTPUT_LEFT) {
+            for (Direction direction : new Direction[]{LEFT}) {
+                BlockEntity be = level.getBlockEntity(getBlockPos().relative(direction));
+                if (be != null) {
+                    be.getCapability(ForgeCapabilities.ENERGY).ifPresent(e -> {
+                        if (e.canReceive()) {
+                            int received = e.receiveEnergy(Math.min(energy.getEnergyStored(), MAXEXTRACT), false);
+                            energy.extractEnergy(received, false);
+                            setChanged();
+                        }
+                    });
+                }
+            }
+        }
+        if (OUTPUT_RIGHT) {
+            for (Direction direction : new Direction[]{RIGHT}) {
+                BlockEntity be = level.getBlockEntity(getBlockPos().relative(direction));
+                if (be != null) {
+                    be.getCapability(ForgeCapabilities.ENERGY).ifPresent(e -> {
+                        if (e.canReceive()) {
+                            int received = e.receiveEnergy(Math.min(energy.getEnergyStored(), MAXEXTRACT), false);
+                            energy.extractEnergy(received, false);
+                            setChanged();
+                        }
+                    });
+                }
             }
         }
     }
+
 
     public ItemStackHandler getItems() {
         return items;
@@ -141,17 +221,27 @@ public class GeneratorBlockEntity extends BlockEntity {
         super.saveAdditional(tag);
         tag.put(ITEMS_TAG, items.serializeNBT());
         tag.put(ENERGY_TAG, energy.serializeNBT());
+        tag.putInt("burnTime", burnTime);
+        tag.putBoolean("output_top", OUTPUT_TOP);
+        tag.putBoolean("output_bottom", OUTPUT_BOTTOM);
+        tag.putBoolean("output_front", OUTPUT_FRONT);
+        tag.putBoolean("output_rear", OUTPUT_REAR);
+        tag.putBoolean("output_left", OUTPUT_LEFT);
+        tag.putBoolean("output_right", OUTPUT_RIGHT);
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        if (tag.contains(ITEMS_TAG)) {
-            items.deserializeNBT(tag.getCompound(ITEMS_TAG));
-        }
-        if (tag.contains(ENERGY_TAG)) {
-            energy.deserializeNBT(tag.get(ENERGY_TAG));
-        }
+        if (tag.contains(ITEMS_TAG)) items.deserializeNBT(tag.getCompound(ITEMS_TAG));
+        if (tag.contains(ENERGY_TAG)) energy.deserializeNBT(tag.get(ENERGY_TAG));
+        if (tag.contains("burnTime")) burnTime = tag.getInt("burnTime");
+        if (tag.contains("output_top")) OUTPUT_TOP = tag.getBoolean("output_top");
+        if (tag.contains("output_bottom")) OUTPUT_BOTTOM = tag.getBoolean("output_bottom");
+        if (tag.contains("output_front")) OUTPUT_FRONT = tag.getBoolean("output_front");
+        if (tag.contains("output_rear")) OUTPUT_REAR = tag.getBoolean("output_rear");
+        if (tag.contains("output_left")) OUTPUT_LEFT = tag.getBoolean("output_left");
+        if (tag.contains("output_right")) OUTPUT_RIGHT = tag.getBoolean("output_right");
     }
 
     @Nonnull
@@ -166,7 +256,7 @@ public class GeneratorBlockEntity extends BlockEntity {
 
     @Nonnull
     private EnergyStorage createEnergyStorage() {
-        return new EnergyStorage(CAPACITY, MAXTRANSFER, MAXTRANSFER);
+        return new EnergyStorage(CAPACITY, MAXRECEIVE, MAXEXTRACT);
     }
 
     @NotNull
@@ -180,4 +270,62 @@ public class GeneratorBlockEntity extends BlockEntity {
             return super.getCapability(cap, side);
         }
     }
+
+
+
+
+    public void setOutputTop(boolean b) {
+        OUTPUT_TOP = b;
+        setChanged();
+    }
+
+    public boolean isOutputTop() {
+        return OUTPUT_TOP;
+    }
+
+    public void setOutputBottom(boolean b) {
+        OUTPUT_BOTTOM = b;
+        setChanged();
+    }
+
+    public boolean isOutputBottom() {
+        return OUTPUT_BOTTOM;
+    }
+
+    public void setOutputFront(boolean b) {
+        OUTPUT_FRONT = b;
+        setChanged();
+    }
+
+    public boolean isOutputFront() {
+        return OUTPUT_FRONT;
+    }
+
+    public void setOutputRear(boolean b) {
+        OUTPUT_REAR = b;
+        setChanged();
+    }
+
+    public boolean isOutputRear() {
+        return OUTPUT_REAR;
+    }
+
+    public void setOutputLeft(boolean b) {
+        OUTPUT_LEFT = b;
+        setChanged();
+    }
+
+    public boolean isOutputLeft() {
+        return OUTPUT_LEFT;
+    }
+
+    public void setOutputRight(boolean b) {
+        OUTPUT_RIGHT = b;
+        setChanged();
+    }
+
+    public boolean isOutputRight() {
+        return OUTPUT_RIGHT;
+    }
+
 }

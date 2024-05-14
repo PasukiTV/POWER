@@ -27,7 +27,7 @@ public class CableBlockEntity extends BlockEntity {
     public static final String ENERGY_TAG = "Energy";
 
     public static final int MAXTRANSFER = 100;
-    public static final int CAPACITY = 1000;
+    public static final int CAPACITY = 100;
 
     private final EnergyStorage energy = createEnergyStorage();
     private final LazyOptional<IEnergyStorage> energyHandler = LazyOptional.of(() -> new AdaptedEnergyStorage(energy) {

@@ -23,7 +23,7 @@ public class ChargerBlockEntity extends BlockEntity {
 
     public static final String ENERGY_TAG = "Energy";
 
-    public static final int MAXTRANSFER = 100;
+    public static final int MAXRECEIVE = 1000;
     public static final int CAPACITY = 10000;
 
     private final EnergyStorage energy = createEnergyStorage();
@@ -77,7 +77,7 @@ public class ChargerBlockEntity extends BlockEntity {
 
     @Nonnull
     private EnergyStorage createEnergyStorage() {
-        return new EnergyStorage(CAPACITY, MAXTRANSFER, MAXTRANSFER);
+        return new EnergyStorage(CAPACITY, MAXRECEIVE);
     }
 
     @NotNull

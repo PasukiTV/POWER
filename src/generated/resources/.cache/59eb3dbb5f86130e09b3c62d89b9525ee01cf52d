@@ -1,5 +1,6 @@
-// 1.20.1	2024-05-07T18:14:19.750529	Loot Tables
+// 1.20.1	2024-05-14T02:34:38.2793086	Loot Tables
 26d5766433826c1ed90c92b91dde9e29cd890dc9 data/power/loot_tables/blocks/cable.json
 4a79a07d4b24445c9d03bc61264b7b0222aef88c data/power/loot_tables/blocks/charger_block.json
 456da009ec5cef7ca05f7af465e5c31ec378c0d5 data/power/loot_tables/blocks/facade.json
+d7af28109c71a9f5cd26eeba032b00f30ee054d4 data/power/loot_tables/blocks/farming_block.json
 fe4ad225cd5381a04cd73029341269ac61cad66d data/power/loot_tables/blocks/generator_block.json

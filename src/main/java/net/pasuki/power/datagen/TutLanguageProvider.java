@@ -19,7 +19,7 @@ public class TutLanguageProvider extends LanguageProvider {
         add(Registration.CHARGER_BLOCK.get(), "Charger");
         add(Registration.CABLE_BLOCK.get(), "Cable");
         add(Registration.FACADE_BLOCK.get(), "Facade");
-        add(GeneratorBlock.SCREEN_TUTORIAL_GENERATOR, "Generator");
+        add(GeneratorBlock.SCREEN_GENERATOR, "Generator");
         add(FacadeBlockItem.FACADE_IS_MIMICING, "Facade is mimicking %s");
         add("tab.tutpower", "Tutorial Power");
     }

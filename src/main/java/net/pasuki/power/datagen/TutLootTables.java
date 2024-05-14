@@ -3,6 +3,7 @@ package net.pasuki.power.datagen;
 import net.pasuki.power.Registration;
 import net.pasuki.power.Power;
 import net.pasuki.power.blocks.ChargerBlockEntity;
+import net.pasuki.power.blocks.FarmingBlockEntity;
 import net.pasuki.power.blocks.GeneratorBlockEntity;
 import net.pasuki.power.cables.blocks.CableBlockEntity;
 import net.pasuki.power.cables.blocks.FacadeBlockEntity;
@@ -32,6 +33,7 @@ public class TutLootTables extends VanillaBlockLoot {
     protected void generate() {
         createStandardTable(Registration.GENERATOR_BLOCK.get(), Registration.GENERATOR_BLOCK_ENTITY.get(), GeneratorBlockEntity.ITEMS_TAG, GeneratorBlockEntity.ENERGY_TAG);
         createStandardTable(Registration.CHARGER_BLOCK.get(), Registration.CHARGER_BLOCK_ENTITY.get(), ChargerBlockEntity.ENERGY_TAG);
+        createStandardTable(Registration.FARMING_BLOCK.get(), Registration.FARMING_BLOCK_ENTITY.get(), FarmingBlockEntity.ITEMS_TAG, FarmingBlockEntity.ENERGY_TAG);
         createStandardTable(Registration.CABLE_BLOCK.get(), Registration.CABLE_BLOCK_ENTITY.get(), CableBlockEntity.ENERGY_TAG);
         createStandardTable(Registration.FACADE_BLOCK.get(), Registration.FACADE_BLOCK_ENTITY.get(), FacadeBlockEntity.MIMIC_TAG);
     }

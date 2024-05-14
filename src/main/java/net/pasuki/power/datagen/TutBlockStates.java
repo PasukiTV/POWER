@@ -1,6 +1,9 @@
 package net.pasuki.power.datagen;
 
 import com.google.gson.JsonObject;
+import net.pasuki.power.Registration;
+import net.pasuki.power.Power;
+import net.pasuki.power.cables.client.CableModelLoader;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -9,9 +12,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.pasuki.power.Power;
-import net.pasuki.power.Registration;
-import net.pasuki.power.cables.client.CableModelLoader;
 
 import java.util.function.BiConsumer;
 
@@ -29,6 +29,7 @@ public class TutBlockStates extends BlockStateProvider {
     protected void registerStatesAndModels() {
         registerGenerator();
         registerCharger();
+        registerFarmingBlock();
         registerCable();
         registerFacade();
     }
@@ -59,13 +60,25 @@ public class TutBlockStates extends BlockStateProvider {
         });
     }
 
+    private void registerFarmingBlock() {
+        BlockModelBuilder modelOn = models().slab(Registration.FARMING_BLOCK.getId().getPath()+"_on", SIDE, BOTTOM, modLoc("block/charger_block_on")).texture("particle", SIDE);
+        BlockModelBuilder modelOff = models().slab(Registration.FARMING_BLOCK.getId().getPath()+"_off", SIDE, BOTTOM, modLoc("block/charger_block")).texture("particle", SIDE);
+        getVariantBuilder(Registration.FARMING_BLOCK.get()).forAllStates(state -> {
+            ConfiguredModel.Builder<?> bld = ConfiguredModel.builder();
+            bld.modelFile(state.getValue(BlockStateProperties.POWERED) ? modelOn : modelOff);
+            return bld.build();
+        });
+    }
+
     private void registerGenerator() {
         BlockModelBuilder modelOn = models().cube(Registration.GENERATOR_BLOCK.getId().getPath()+"_on", BOTTOM, TOP, modLoc("block/generator_block_on"), SIDE, SIDE, SIDE).texture("particle", SIDE);
         BlockModelBuilder modelOff = models().cube(Registration.GENERATOR_BLOCK.getId().getPath()+"_off", BOTTOM, TOP, modLoc("block/generator_block"), SIDE, SIDE, SIDE).texture("particle", SIDE);
-        directionBlock(Registration.GENERATOR_BLOCK.get(), (state, builder) -> builder.modelFile(state.getValue(BlockStateProperties.POWERED) ? modelOn : modelOff));
+        directionBlock(Registration.GENERATOR_BLOCK.get(), (state, builder) -> {
+            builder.modelFile(state.getValue(BlockStateProperties.POWERED) ? modelOn : modelOff);
+        });
     }
 
-    private void directionBlock(Block block, BiConsumer<BlockState, ConfiguredModel.Builder<?>> model) {
+    private VariantBlockStateBuilder directionBlock(Block block, BiConsumer<BlockState, ConfiguredModel.Builder<?>> model) {
         VariantBlockStateBuilder builder = getVariantBuilder(block);
         builder.forAllStates(state -> {
             ConfiguredModel.Builder<?> bld = ConfiguredModel.builder();
@@ -73,6 +86,7 @@ public class TutBlockStates extends BlockStateProvider {
             applyRotationBld(bld, state.getValue(BlockStateProperties.FACING));
             return bld.build();
         });
+        return builder;
     }
 
     private void applyRotationBld(ConfiguredModel.Builder<?> builder, Direction direction) {

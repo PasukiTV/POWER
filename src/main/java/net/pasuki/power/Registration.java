@@ -35,6 +35,13 @@ public class Registration {
     public static final RegistryObject<BlockEntityType<ChargerBlockEntity>> CHARGER_BLOCK_ENTITY = BLOCK_ENTITIES.register("charger_block",
             () -> BlockEntityType.Builder.of(ChargerBlockEntity::new, CHARGER_BLOCK.get()).build(null));
 
+    public static final RegistryObject<FarmingBlock> FARMING_BLOCK = BLOCKS.register("farming_block", FarmingBlock::new);
+    public static final RegistryObject<Item> FARMING_BLOCK_ITEM = ITEMS.register("farming_block", () -> new BlockItem(FARMING_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockEntityType<FarmingBlockEntity>> FARMING_BLOCK_ENTITY = BLOCK_ENTITIES.register("farming_block",
+            () -> BlockEntityType.Builder.of(FarmingBlockEntity::new, FARMING_BLOCK.get()).build(null));
+    public static final RegistryObject<MenuType<FarmContainer>> FARM_CONTAINER = MENU_TYPES.register("farming_block",
+            () -> IForgeMenuType.create((windowId, inv, data) -> new FarmContainer(windowId, inv.player, data.readBlockPos())));
+
     public static final RegistryObject<CableBlock> CABLE_BLOCK = BLOCKS.register("cable", CableBlock::new);
     public static final RegistryObject<Item> CABLE_BLOCK_ITEM = ITEMS.register("cable", () -> new BlockItem(CABLE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<BlockEntityType<CableBlockEntity>> CABLE_BLOCK_ENTITY = BLOCK_ENTITIES.register("cable",
@@ -54,6 +61,7 @@ public class Registration {
                 output.accept(CHARGER_BLOCK.get());
                 output.accept(CABLE_BLOCK.get());
                 output.accept(FACADE_BLOCK.get());
+                output.accept(FARMING_BLOCK.get());
             })
             .build());
 

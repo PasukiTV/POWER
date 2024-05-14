@@ -1,0 +1,168 @@
+---- Minecraft Crash Report ----
+// Shall we play a game?
+
+Time: 2024-05-11 10:32:28
+Description: Ticking block entity
+
+java.lang.ExceptionInInitializerError: null
+	at net.pasuki.power.blocks.GeneratorBlock.newBlockEntity(GeneratorBlock.java:52) ~[%23196!/:?] {re:classloading}
+	at net.minecraft.world.level.chunk.LevelChunk.createBlockEntity(LevelChunk.java:288) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.world.level.chunk.LevelChunk.getBlockEntity(LevelChunk.java:315) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.world.level.Level.getBlockEntity(Level.java:606) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.pasuki.power.cables.blocks.CableBlockEntity.lambda$checkOutputs$3(CableBlockEntity.java:99) ~[%23196!/:?] {re:classloading}
+	at net.pasuki.power.cables.blocks.CableBlockEntity.traverse(CableBlockEntity.java:121) ~[%23196!/:?] {re:classloading}
+	at net.pasuki.power.cables.blocks.CableBlockEntity.checkOutputs(CableBlockEntity.java:95) ~[%23196!/:?] {re:classloading}
+	at net.pasuki.power.cables.blocks.CableBlockEntity.tickServer(CableBlockEntity.java:70) ~[%23196!/:?] {re:classloading}
+	at net.pasuki.power.cables.blocks.CableBlock.lambda$getTicker$0(CableBlock.java:90) ~[%23196!/:?] {re:classloading}
+	at net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:689) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:782) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.world.level.Level.tickBlockEntities(Level.java:511) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:354) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:923) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:844) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:95) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:679) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:251) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+Caused by: java.lang.NullPointerException: Cannot invoke "net.minecraftforge.energy.EnergyStorage.getEnergyStored()" because "net.pasuki.power.blocks.GeneratorBlockEntity.energy" is null
+	at net.pasuki.power.blocks.GeneratorBlockEntity.getStoredPower(GeneratorBlockEntity.java:217) ~[%23196!/:?] {re:classloading}
+	at net.pasuki.power.blocks.GeneratorBlockEntity.<clinit>(GeneratorBlockEntity.java:31) ~[%23196!/:?] {re:classloading}
+	... 19 more
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at net.pasuki.power.blocks.GeneratorBlock.newBlockEntity(GeneratorBlock.java:52) ~[%23196!/:?] {re:classloading}
+	at net.minecraft.world.level.chunk.LevelChunk.createBlockEntity(LevelChunk.java:288) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.world.level.chunk.LevelChunk.getBlockEntity(LevelChunk.java:315) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.world.level.Level.getBlockEntity(Level.java:606) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.pasuki.power.cables.blocks.CableBlockEntity.lambda$checkOutputs$3(CableBlockEntity.java:99) ~[%23196!/:?] {re:classloading}
+	at net.pasuki.power.cables.blocks.CableBlockEntity.traverse(CableBlockEntity.java:121) ~[%23196!/:?] {re:classloading}
+	at net.pasuki.power.cables.blocks.CableBlockEntity.checkOutputs(CableBlockEntity.java:95) ~[%23196!/:?] {re:classloading}
+	at net.pasuki.power.cables.blocks.CableBlockEntity.tickServer(CableBlockEntity.java:70) ~[%23196!/:?] {re:classloading}
+	at net.pasuki.power.cables.blocks.CableBlock.lambda$getTicker$0(CableBlock.java:90) ~[%23196!/:?] {re:classloading}
+	at net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:689) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:782) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.world.level.Level.tickBlockEntities(Level.java:511) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:354) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+-- Block entity being ticked --
+Details:
+	Name: power:cable // net.pasuki.power.cables.blocks.CableBlockEntity
+	Block: Block{power:cable}[down=none,east=none,north=block,south=block,up=none,waterlogged=false,west=none]
+	Block location: World: (3,-60,4), Section: (at 3,4,4 in 0,-4,0; chunk contains blocks 0,-64,0 to 15,319,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,-64,0 to 511,319,511)
+	Block: Block{power:cable}[down=none,east=none,north=block,south=block,up=none,waterlogged=false,west=none]
+	Block location: World: (3,-60,4), Section: (at 3,4,4 in 0,-4,0; chunk contains blocks 0,-64,0 to 15,319,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,-64,0 to 511,319,511)
+Stacktrace:
+	at net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:689) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:782) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.world.level.Level.tickBlockEntities(Level.java:511) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:354) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:923) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:844) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:95) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:679) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:251) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+
+
+-- Affected level --
+Details:
+	All players: 0 total; []
+	Chunk stats: 2209
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (0,-60,0), Section: (at 0,4,0 in 0,-4,0; chunk contains blocks 0,-64,0 to 15,319,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,-64,0 to 511,319,511)
+	Level time: 29365 game time, 29365 day time
+	Level name: New World
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+	Level weather: Rain time: 2226 (now: false), thunder time: 74459 (now: false)
+	Known server brands: forge
+	Removed feature flags: 
+	Level was modded: true
+	Level storage version: 0x04ABD - Anvil
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:923) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:844) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:95) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:679) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:251) ~[forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.20.1
+	Minecraft Version ID: 1.20.1
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 17.0.11, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Adoptium
+	Memory: 665759944 bytes (634 MiB) / 1509949440 bytes (1440 MiB) up to 8568963072 bytes (8172 MiB)
+	CPUs: 12
+	Processor Vendor: AuthenticAMD
+	Processor Name: AMD Ryzen 5 3600X 6-Core Processor             
+	Identifier: AuthenticAMD Family 23 Model 113 Stepping 0
+	Microarchitecture: Zen 2
+	Frequency (GHz): 3.80
+	Number of physical packages: 1
+	Number of physical CPUs: 6
+	Number of logical CPUs: 12
+	Graphics card #0 name: NVIDIA GeForce RTX 2080 SUPER
+	Graphics card #0 vendor: NVIDIA (0x10de)
+	Graphics card #0 VRAM (MB): 4095.00
+	Graphics card #0 deviceId: 0x1e81
+	Graphics card #0 versionInfo: DriverVersion=31.0.15.5222
+	Memory slot #0 capacity (MB): 8192.00
+	Memory slot #0 clockSpeed (GHz): 3.60
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MB): 8192.00
+	Memory slot #1 clockSpeed (GHz): 3.60
+	Memory slot #1 type: DDR4
+	Memory slot #2 capacity (MB): 8192.00
+	Memory slot #2 clockSpeed (GHz): 3.60
+	Memory slot #2 type: DDR4
+	Memory slot #3 capacity (MB): 8192.00
+	Memory slot #3 clockSpeed (GHz): 3.60
+	Memory slot #3 type: DDR4
+	Virtual memory max (MB): 34728.58
+	Virtual memory used (MB): 22121.20
+	Swap memory total (MB): 2048.00
+	Swap memory used (MB): 106.24
+	JVM Flags: 1 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	Server Running: true
+	Player Count: 0 / 8; []
+	Data Packs: vanilla, mod:theoneprobe, mod:forge, mod:power, mod:jei (incompatible)
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Stable
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'forge'; Server brand changed to 'forge'
+	Launched Version: MOD_DEV
+	ModLauncher: 10.0.9+10.0.9+main.dcd20f30
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		mixin-0.8.5.jar mixin PLUGINSERVICE 
+		eventbus-6.0.5.jar eventbus PLUGINSERVICE 
+		fmlloader-1.20.1-47.1.3.jar slf4jfixer PLUGINSERVICE 
+		fmlloader-1.20.1-47.1.3.jar object_holder_definalize PLUGINSERVICE 
+		fmlloader-1.20.1-47.1.3.jar runtime_enum_extender PLUGINSERVICE 
+		fmlloader-1.20.1-47.1.3.jar capability_token_subclass PLUGINSERVICE 
+		accesstransformers-8.0.4.jar accesstransformer PLUGINSERVICE 
+		fmlloader-1.20.1-47.1.3.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-10.0.9.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-10.0.9.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		minecraft@1.0
+		lowcodefml@null
+		javafml@null
+	Mod List: 
+		forge-1.20.1-47.1.3_mapped_parchment_2023.06.26-1.|Minecraft                     |minecraft                     |1.20.1              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		theoneprobe-1.20.1-10.0.1-3_mapped_parchment_2023.|The One Probe                 |theoneprobe                   |1.20.1-10.0.1-3     |DONE      |Manifest: NOSIGNATURE
+		                                                  |Forge                         |forge                         |47.1.3              |DONE      |Manifest: NOSIGNATURE
+		main                                              |Power                         |power                         |1.0.0               |DONE      |Manifest: NOSIGNATURE
+		jei-1.20.1-forge-15.0.0.12_mapped_parchment_2023.0|Just Enough Items             |jei                           |15.0.0.12           |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: 819da391-c7ab-41cc-8147-b43d7c91fc5d
+	FML: 47.1
+	Forge: net.minecraftforge:47.1.3
