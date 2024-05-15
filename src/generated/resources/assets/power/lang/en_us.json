@@ -2,6 +2,7 @@
   "block.power.cable": "Cable",
   "block.power.charger_block": "Charger",
   "block.power.facade": "Facade",
+  "block.power.farming_block": "Farmstation",
   "block.power.generator_block": "Power Generator",
   "screen.generator": "Generator",
   "tab.tutpower": "Tutorial Power",

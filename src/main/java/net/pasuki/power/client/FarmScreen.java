@@ -6,10 +6,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.pasuki.power.Power;
-import net.pasuki.power.blocks.FarmContainer;
-import net.pasuki.power.blocks.FarmingBlockEntity;
-import net.pasuki.power.blocks.GeneratorBlockEntity;
-import net.pasuki.power.blocks.GeneratorContainer;
+import net.pasuki.power.blocks.FarmingBlock.FarmContainer;
+import net.pasuki.power.blocks.FarmingBlock.FarmingBlockEntity;
 
 @SuppressWarnings("NullableProblems")
 public class FarmScreen extends AbstractContainerScreen<FarmContainer> {

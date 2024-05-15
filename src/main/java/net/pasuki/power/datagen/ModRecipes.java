@@ -1,6 +1,5 @@
 package net.pasuki.power.datagen;
 
-import net.pasuki.power.Registration;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.PackOutput;
@@ -11,13 +10,13 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
+import net.pasuki.power.Registration;
 
 import java.util.function.Consumer;
 
-@SuppressWarnings("NullableProblems")
-public class TutRecipes extends RecipeProvider {
+public class ModRecipes extends RecipeProvider {
 
-    public TutRecipes(PackOutput packOutput) {
+    public ModRecipes(PackOutput packOutput) {
         super(packOutput);
     }
 

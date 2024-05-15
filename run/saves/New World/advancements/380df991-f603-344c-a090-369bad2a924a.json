@@ -173,6 +173,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/transportation/carrot_on_a_stick": {
+    "criteria": {
+      "has_carrot": "2024-05-14 21:18:18 +0200"
+    },
+    "done": true
+  },
   "minecraft:recipes/food/baked_potato_from_campfire_cooking": {
     "criteria": {
       "has_potato": "2024-05-14 21:18:24 +0200"
@@ -188,12 +194,6 @@
   "minecraft:recipes/food/baked_potato": {
     "criteria": {
       "has_potato": "2024-05-14 21:18:24 +0200"
-    },
-    "done": true
-  },
-  "minecraft:recipes/transportation/carrot_on_a_stick": {
-    "criteria": {
-      "has_carrot": "2024-05-14 21:18:18 +0200"
     },
     "done": true
   },

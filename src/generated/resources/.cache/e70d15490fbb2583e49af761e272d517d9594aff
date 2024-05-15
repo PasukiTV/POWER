@@ -1,3 +1,3 @@
-// 1.20.1	2024-05-07T18:14:19.748505	Tags for minecraft:block mod id power
-7472ca718f2ba797c16af738229b9bff66162d84 data/minecraft/tags/blocks/mineable/pickaxe.json
-7472ca718f2ba797c16af738229b9bff66162d84 data/minecraft/tags/blocks/needs_iron_tool.json
+// 1.20.1	2024-05-14T23:25:10.372728	Tags for minecraft:block mod id power
+8a5d7832a27b8d7bde0278886ee90872601f65d2 data/minecraft/tags/blocks/mineable/pickaxe.json
+8a5d7832a27b8d7bde0278886ee90872601f65d2 data/minecraft/tags/blocks/needs_iron_tool.json

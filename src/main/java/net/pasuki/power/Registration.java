@@ -1,6 +1,11 @@
 package net.pasuki.power;
 
 import net.pasuki.power.blocks.*;
+import net.pasuki.power.blocks.ChargerBlock.ChargerBlock;
+import net.pasuki.power.blocks.ChargerBlock.ChargerBlockEntity;
+import net.pasuki.power.blocks.FarmingBlock.FarmContainer;
+import net.pasuki.power.blocks.FarmingBlock.FarmingBlock;
+import net.pasuki.power.blocks.FarmingBlock.FarmingBlockEntity;
 import net.pasuki.power.cables.blocks.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;

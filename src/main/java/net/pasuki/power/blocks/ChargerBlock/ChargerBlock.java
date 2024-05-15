@@ -1,4 +1,4 @@
-package net.pasuki.power.blocks;
+package net.pasuki.power.blocks.ChargerBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -47,7 +47,7 @@ public class ChargerBlock extends Block implements EntityBlock {
             return null;
         } else {
             return (lvl, pos, st, be) -> {
-                if (be instanceof net.pasuki.power.blocks.ChargerBlockEntity charger) {
+                if (be instanceof ChargerBlockEntity charger) {
                     charger.tickServer();
                 }
             };
